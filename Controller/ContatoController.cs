@@ -68,5 +68,12 @@ namespace API.Controller
             _context.SaveChanges();
             return NoContent();
         }
+
+        [HttpGet("ObterPorNome")]
+        public IActionResult ObterPorNome(string nome)
+        {
+            var contatos = _context.Contatos.Where(x => x.Name.Contains(nome));
+            return Ok(contatos);
+        }
     }
 }
